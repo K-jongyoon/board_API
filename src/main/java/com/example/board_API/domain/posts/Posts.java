@@ -1,10 +1,12 @@
 package com.example.board_API.domain.posts;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.example.board_API.domain.BaseTimeEntity;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -12,7 +14,13 @@ import java.util.List;
 @Entity
 public class Posts {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @CreatedDate
+//    private LocalDateTime createdDate;
+//
+//    @LastModifiedDate
+//    private LocalDateTime modifiedDate;
+
+    @Id @GeneratedValue
     private Long id;
 
     @Column(length=500, nullable=false)
@@ -29,4 +37,11 @@ public class Posts {
         this.content = content;
         this.author = author;
     }
+
+    public void update(String title, String content){
+        this.title = title;
+        this.content = content;
+    }
+
+
 }
